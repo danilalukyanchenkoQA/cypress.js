@@ -21,10 +21,27 @@ describe("Авторизация", function() {
         cy.get(':nth-child(2) > .ksgc2').type("Luchok22348");
         cy.get('.a1ISs').click();
         cy.get('.s1dXf').should('have.text', 'Invalid email or password.');
+    });
 
-  
+    it.only("Строка поиска(верхняя)+Url", function() {
+        cy.visit("https://unsplash.com/");
+        cy.get('[data-test="nav-bar-search-form-input"]').type('summer');
+        cy.get('[data-test="nav-bar-search-form-input"]').type('{enter}');
+        cy.wait(3000);
+        cy.title().should('include', 'Summer');
+        cy.get('[data-test="page-header-title"]').should('have.text', 'Summer');
+        cy.url().should('include', 'https://unsplash.com/s/photos/summer');
+    });
 
-     })
+     it("Строка поиска(нижняя)+Url", function() {
+        cy.visit("https://unsplash.com/");
+        cy.get('[data-test="homepage-header-search-form-input"]').type('winter');
+        cy.wait(3000);
+        cy.get('[data-test="homepage-header-search-form-input"]').type('{enter}');
+        cy.wait(3000);
+        cy.title().should('include', 'Winter');
+        cy.url().should('include', 'https://unsplash.com/s/photos/winter');
+    });
 
 
 
