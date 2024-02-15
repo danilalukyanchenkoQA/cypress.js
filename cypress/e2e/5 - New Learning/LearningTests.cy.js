@@ -1,11 +1,10 @@
 describe("Авторизация", function() {
 
-
-     it.only("Вход с валидным логином и паролем", function() {
+        it("Вход с валидным логином и паролем", function() {
         cy.visit("https://unsplash.com/");
         cy.title().should('include', 'Unsplash');
         cy.contains("Log in").should('be.visible').click();
-        cy.contains("Email" );  
+        cy.url().should('include', 'https://unsplash.com/login'); 
         cy.get(':nth-child(1) > .ksgc2').type("danila.kaluga26@gmail.com");
         cy.get(':nth-child(2) > .ksgc2').type("Luchok228");
         cy.get('.a1ISs').click();
@@ -30,7 +29,7 @@ describe("Авторизация", function() {
     it("Вход с невалидным логином и паролем", function() {
         cy.visit("https://unsplash.com/");
         cy.contains("Log in").click();
-        cy.contains("Email" );
+        cy.url().should('include', 'https://unsplash.com/login'); 
         cy.get(':nth-child(1) > .ksgc2').type("danila.kaluga2546@gmail.com");
         cy.get(':nth-child(2) > .ksgc2').type("Luchok22348");
         cy.get('.a1ISs').click();
@@ -39,7 +38,6 @@ describe("Авторизация", function() {
 });
 
 describe("Основные функции сайта", function() {
-
 
     it("Строка поиска(верхняя)+Url", function() {
         cy.visit("https://unsplash.com/");
@@ -53,16 +51,30 @@ describe("Основные функции сайта", function() {
 
      it("Строка поиска(нижняя)+Url", function() {
         cy.visit("https://unsplash.com/");
-        cy.get('[data-test="homepage-header-search-form-input"]').type('winter');
-        cy.wait(3000);
-        cy.get('[data-test="homepage-header-search-form-input"]').type('{enter}');
+        cy.get('[data-test="homepage-header-search-form-input"]').type('winter{enter}');
         cy.wait(3000);
         cy.title().should('include', 'Winter');
         cy.url().should('include', 'https://unsplash.com/s/photos/winter');
     });
 
-
-
+    it.only("Поиск+Скролл", function() {
+        cy.visit("https://unsplash.com/");
+        cy.get('[data-test="homepage-header-search-form-input"]').type('car{enter}');
+        cy.wait(3000);
+        cy.title().should('include', 'Car');
+        cy.url().should('include', 'https://unsplash.com/s/photos/car');
+        cy.scrollTo('bottom');
+        cy.wait(3000);
+        cy.scrollTo('center');
+        cy.wait(3000);
+        cy.scrollTo('top');
+        cy.wait(3000);
+        cy.scrollTo(0, 1500);
+        cy.wait(3000);
+        cy.get(':nth-child(2) > :nth-child(5) > .GFY23').click();
+        cy.get('.sBV1O > [data-test="non-sponsored-photo-download-button"]').should('be.visible');
+       
+    });
 
 
 
