@@ -1,0 +1,5 @@
+include:
+  - project: 'DanilaQA/test'
+    ref: master
+    tag: latest
+    file: 'main.yml'
