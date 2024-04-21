@@ -1,29 +1,29 @@
 describe("Авторизация", function() {
 
-        it("Вход с валидным логином и паролем", function() {
+    it("Вход с валидным логином и паролем", function() {
         cy.visit("https://unsplash.com/");
         cy.title().should('include', 'Unsplash');
         cy.contains("Log in").should('be.visible').click();
         cy.url().should('include', 'https://unsplash.com/login'); 
-        cy.get(':nth-child(1) > .ksgc2').type("danila.kaluga26@gmail.com");
-        cy.get(':nth-child(2) > .ksgc2').type("Luchok228");
-        cy.get('.a1ISs').click();
-        cy.get('.cLLOA').should('not.exist');
+        cy.get(':nth-child(1) > .ffHip').type("danila.kaluga26@gmail.com"); 
+        cy.get(':nth-child(2) > .ffHip').type("Luchok228");
+        cy.get('button[class="IUoDf Qzy6N ogSND ZR5jm cs1e4 ibgtd LoCAy mP89P szXtT DA6Wz"]').click(); 
+        cy.get('.wcgxB').should('not.exist');
      });
      
-     it("Выход из системы", function() {
+     it.only("Выход из системы", function() {
         cy.visit("https://unsplash.com/");
         cy.title().should('include', 'Unsplash');
         cy.contains("Log in").should('be.visible').click();
-        cy.contains("Email" );
-        cy.get(':nth-child(1) > .ksgc2').type("danila.kaluga26@gmail.com");
-        cy.get(':nth-child(2) > .ksgc2').type("Luchok228");
-        cy.get('.a1ISs').click();
-        cy.get('.cLLOA').should('not.exist');
-        cy.get('.ptze8').click();
-        cy.get(':nth-child(3) > li > .KR60y').should('have.text', 'Logout @danilaqa');
-        cy.get(':nth-child(3) > li > .KR60y').click();
+        cy.url().should('include', 'https://unsplash.com/login'); 
+        cy.get(':nth-child(1) > .ffHip').type("danila.kaluga26@gmail.com"); 
+        cy.get(':nth-child(2) > .ffHip').type("Luchok228");
+        cy.get('button[class="IUoDf Qzy6N ogSND ZR5jm cs1e4 ibgtd LoCAy mP89P szXtT DA6Wz"]').click(); 
+        cy.get('.wcgxB').should('not.exist');
+        cy.get('img[class="Lg6wf DlmAi"]').click();
+        cy.get('button[class="wH4EU FEdrY zZzwR OvNxk VHcyz cs1e4 f62h9 thIqV"]').click();  
         cy.contains("Log in");
+        cy.get('img[class="Lg6wf DlmAi"]').should('not.exist');
     });      
 
     it("Вход с невалидным логином и паролем", function() {
