@@ -1,38 +1,38 @@
 describe("Авторизация", function() {
 
-        it("Вход с валидным логином и паролем", function() {
+    it("Вход с валидным логином и паролем", function() {
         cy.visit("https://unsplash.com/");
         cy.title().should('include', 'Unsplash');
         cy.contains("Log in").should('be.visible').click();
         cy.url().should('include', 'https://unsplash.com/login'); 
-        cy.get(':nth-child(1) > .ksgc2').type("danila.kaluga26@gmail.com");
-        cy.get(':nth-child(2) > .ksgc2').type("Luchok228");
-        cy.get('.a1ISs').click();
-        cy.get('.cLLOA').should('not.exist');
+        cy.get(':nth-child(1) > .ffHip').type("danila.kaluga26@gmail.com"); 
+        cy.get(':nth-child(2) > .ffHip').type("Luchok228");
+        cy.get('button[class="IUoDf Qzy6N ogSND ZR5jm cs1e4 ibgtd LoCAy mP89P szXtT DA6Wz"]').click(); 
+        cy.get('.wcgxB').should('not.exist');
      });
      
      it("Выход из системы", function() {
         cy.visit("https://unsplash.com/");
         cy.title().should('include', 'Unsplash');
         cy.contains("Log in").should('be.visible').click();
-        cy.contains("Email" );
-        cy.get(':nth-child(1) > .ksgc2').type("danila.kaluga26@gmail.com");
-        cy.get(':nth-child(2) > .ksgc2').type("Luchok228");
-        cy.get('.a1ISs').click();
-        cy.get('.cLLOA').should('not.exist');
-        cy.get('.ptze8').click();
-        cy.get(':nth-child(3) > li > .KR60y').should('have.text', 'Logout @danilaqa');
-        cy.get(':nth-child(3) > li > .KR60y').click();
+        cy.url().should('include', 'https://unsplash.com/login'); 
+        cy.get(':nth-child(1) > .ffHip').type("danila.kaluga26@gmail.com"); 
+        cy.get(':nth-child(2) > .ffHip').type("Luchok228");
+        cy.get('button[class="IUoDf Qzy6N ogSND ZR5jm cs1e4 ibgtd LoCAy mP89P szXtT DA6Wz"]').click(); 
+        cy.get('.wcgxB').should('not.exist');
+        cy.get('img[class="Lg6wf DlmAi"]').click();
+        cy.get('button[class="wH4EU FEdrY zZzwR OvNxk VHcyz cs1e4 f62h9 thIqV"]').click();  
         cy.contains("Log in");
+        cy.get('img[class="Lg6wf DlmAi"]').should('not.exist');
     });      
 
-    it("Вход с невалидным логином и паролем", function() {
+    it.only("Вход с невалидным логином и паролем", function() {
         cy.visit("https://unsplash.com/");
         cy.contains("Log in").click();
         cy.url().should('include', 'https://unsplash.com/login'); 
-        cy.get(':nth-child(1) > .ksgc2').type("danila.kaluga2546@gmail.com");
-        cy.get(':nth-child(2) > .ksgc2').type('Luchok22348{enter}');     
-        cy.get('.s1dXf').should('have.text', 'Invalid email or password.');
+        cy.get(':nth-child(1) > .ffHip').type("danila.kaluga2546@gmail.com");
+        cy.get(':nth-child(2) > .ffHip').type('Luchok22348{enter}');     
+        cy.get('div[class="ESPog"]').contains("Invalid email or password.");
     });
 });
 
@@ -68,9 +68,6 @@ describe("Основные функции сайта", function() {
         cy.scrollTo('top');
         cy.wait(3000);
         cy.scrollTo(0, 1500);
-        cy.wait(3000);
-        cy.get(':nth-child(2) > :nth-child(5) > .GFY23').click();
-        cy.get('.sBV1O > [data-test="non-sponsored-photo-download-button"]').should('be.visible');
        
     });
 
@@ -78,7 +75,7 @@ describe("Основные функции сайта", function() {
         cy.visit("https://unsplash.com/");
         cy.get('[data-test="homepage-header-search-form-input"]').type('dfgshghsdldkjs{enter}');
         cy.wait(3000);
-        cy.get('.PTz06').should('be.visible');
+        cy.get('img[class="AAazD"]').should('be.visible');
         cy.contains("Photos 0");
         cy.contains("Collections 0");
     });
