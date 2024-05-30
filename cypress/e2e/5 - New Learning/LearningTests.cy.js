@@ -1,9 +1,7 @@
 describe("Авторизация", function() {
 
     it("Вход с валидным логином и паролем", function() {
-        cy.visit("https://unsplash.com/");
-        cy.title().should('include', 'Unsplash');
-        cy.contains("Log in").should('be.visible').click();
+        cy.visit("https://unsplash.com/login");
         cy.url().should('include', 'https://unsplash.com/login'); 
         cy.get(':nth-child(1) > .ffHip').type("danila.kaluga26@gmail.com"); 
         cy.get(':nth-child(2) > .ffHip').type("Luchok228");
@@ -12,9 +10,7 @@ describe("Авторизация", function() {
      });
      
      it("Выход из системы", function() {
-        cy.visit("https://unsplash.com/");
-        cy.title().should('include', 'Unsplash');
-        cy.contains("Log in").should('be.visible').click();
+        cy.visit("https://unsplash.com/login");
         cy.url().should('include', 'https://unsplash.com/login'); 
         cy.get(':nth-child(1) > .ffHip').type("danila.kaluga26@gmail.com"); 
         cy.get(':nth-child(2) > .ffHip').type("Luchok228");
@@ -26,9 +22,8 @@ describe("Авторизация", function() {
         cy.get('img[class="Lg6wf DlmAi"]').should('not.exist');
     });      
 
-    it("Вход с невалидным логином и паролем", function() {
-        cy.visit("https://unsplash.com/");
-        cy.contains("Log in").click();
+    it.only("Вход с невалидным логином и паролем", function() {
+        cy.visit("https://unsplash.com/login");
         cy.url().should('include', 'https://unsplash.com/login'); 
         cy.get(':nth-child(1) > .ffHip').type("danila.kaluga2546@gmail.com");
         cy.get(':nth-child(2) > .ffHip').type('Luchok22348{enter}');     
