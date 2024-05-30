@@ -1,10 +1,25 @@
+describe("Регистрация", function() {
+
+    const USER_EMAIL = 'danila.kaluga26@gmail.com'
+    const PASSWORD = 'Luchok228'  
+
+    
+});
+
+
+
+
 describe("Авторизация", function() {
+
+const USER_EMAIL = 'danila.kaluga26@gmail.com'
+const PASSWORD = 'Luchok228'
+
 
     it("Вход с валидным логином и паролем", function() {
         cy.visit("https://unsplash.com/login");
         cy.url().should('include', 'https://unsplash.com/login'); 
-        cy.get(':nth-child(1) > .ffHip').type("danila.kaluga26@gmail.com"); 
-        cy.get(':nth-child(2) > .ffHip').type("Luchok228");
+        cy.get(':nth-child(1) > .ffHip').type(USER_EMAIL); 
+        cy.get(':nth-child(2) > .ffHip').type(PASSWORD);
         cy.get('button[class="IUoDf Qzy6N ogSND ZR5jm cs1e4 ibgtd LoCAy mP89P szXtT DA6Wz"]').click(); 
         cy.get('.wcgxB').should('not.exist');
      });
@@ -12,8 +27,8 @@ describe("Авторизация", function() {
      it("Выход из системы", function() {
         cy.visit("https://unsplash.com/login");
         cy.url().should('include', 'https://unsplash.com/login'); 
-        cy.get(':nth-child(1) > .ffHip').type("danila.kaluga26@gmail.com"); 
-        cy.get(':nth-child(2) > .ffHip').type("Luchok228");
+        cy.get(':nth-child(1) > .ffHip').type(USER_EMAIL); 
+        cy.get(':nth-child(2) > .ffHip').type(PASSWORD);
         cy.get('button[class="IUoDf Qzy6N ogSND ZR5jm cs1e4 ibgtd LoCAy mP89P szXtT DA6Wz"]').click(); 
         cy.get('.wcgxB').should('not.exist');
         cy.get('img[class="Lg6wf DlmAi"]').click();
@@ -22,7 +37,7 @@ describe("Авторизация", function() {
         cy.get('img[class="Lg6wf DlmAi"]').should('not.exist');
     });      
 
-    it.only("Вход с невалидным логином и паролем", function() {
+    it("Вход с невалидным логином и паролем", function() {
         cy.visit("https://unsplash.com/login");
         cy.url().should('include', 'https://unsplash.com/login'); 
         cy.get(':nth-child(1) > .ffHip').type("danila.kaluga2546@gmail.com");
