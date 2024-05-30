@@ -26,7 +26,7 @@ describe("Авторизация", function() {
         cy.get('img[class="Lg6wf DlmAi"]').should('not.exist');
     });      
 
-    it.only("Вход с невалидным логином и паролем", function() {
+    it("Вход с невалидным логином и паролем", function() {
         cy.visit("https://unsplash.com/");
         cy.contains("Log in").click();
         cy.url().should('include', 'https://unsplash.com/login'); 
