@@ -15,10 +15,18 @@ const USER_EMAIL = 'danila.kaluga26@gmail.com'
 const PASSWORD = 'Luchok228'
 
 
+     it("Проверка на введенный в строку текст", function() {
+        cy.visit("https://unsplash.com/login");
+        cy.url().should('include', 'https://unsplash.com/login'); 
+        cy.get(':nth-child(1) > .ffHip').type(USER_EMAIL).should('have.value', USER_EMAIL); 
+        cy.get(':nth-child(2) > .ffHip').type(PASSWORD).should('have.value', PASSWORD);
+ });
+ 
+
     it("Вход с валидным логином и паролем", function() {
         cy.visit("https://unsplash.com/login");
         cy.url().should('include', 'https://unsplash.com/login'); 
-        cy.get(':nth-child(1) > .ffHip').type(USER_EMAIL); 
+        cy.get(':nth-child(1) > .ffHip').type(USER_EMAIL).should('have.value', USER_EMAIL); 
         cy.get(':nth-child(2) > .ffHip').type(PASSWORD);
         cy.get('button[class="IUoDf Qzy6N ogSND ZR5jm cs1e4 ibgtd LoCAy mP89P szXtT DA6Wz"]').click(); 
         cy.get('.wcgxB').should('not.exist');
@@ -94,4 +102,4 @@ describe("Основные функции сайта", function() {
 
 
 })
-
+ 
