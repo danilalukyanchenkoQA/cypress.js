@@ -1,15 +1,5 @@
 {
-  "name": "cypress",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "cypress open"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "cypress": "^9.6.0"
+    "cypress": "^13.13.1"
   }
 }
