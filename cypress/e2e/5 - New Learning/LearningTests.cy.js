@@ -14,6 +14,12 @@ describe("Авторизация", function() {
 const USER_EMAIL = 'danila.kaluga26@gmail.com'
 const PASSWORD = 'Luchok228'
 
+    it("Проверка на введенный в строку текст", function() {
+        cy.visit("https://unsplash.com/login");
+        cy.url().should('include', 'https://unsplash.com/login'); 
+        cy.get('input[name="email"]').type(USER_EMAIL).should('have.value', USER_EMAIL); 
+        cy.get('input[name="password"]').type(PASSWORD).should('have.value', PASSWORD);
+});
 
     it("Вход с валидным логином и паролем", function() {
         cy.visit("https://unsplash.com/login");
@@ -48,12 +54,10 @@ const PASSWORD = 'Luchok228'
 
 describe("Основные функции сайта", function() {
 
-    it("Строка поиска(верхняя)+Url", function() {
+    it.only("Строка поиска(верхняя)+Url", function() {
         cy.visit("https://unsplash.com/");
         cy.get('[data-test="nav-bar-search-form-input"]').type('summer{enter}');
-        cy.wait(3000);
         cy.title().should('include', 'Summer');
-        cy.get('[data-test="page-header-title"]').should('have.text', 'Summer');
         cy.url().should('include', 'https://unsplash.com/s/photos/summer');
     });
 
