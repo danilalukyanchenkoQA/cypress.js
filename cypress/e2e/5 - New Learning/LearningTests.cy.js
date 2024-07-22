@@ -1,18 +1,9 @@
-beforeEach(() => {
-    // Запускаем тесты с разерешением 1920 на 1080
-    cy.viewport(1920, 1080)
-  })
-
 describe("Регистрация", function() {
 
     const USER_EMAIL = 'danila.kaluga26@gmail.com'
     const PASSWORD = 'Luchok228'  
-    
-    
+
 });
-
-
-
 
 describe("Авторизация", function() {
 
