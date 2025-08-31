@@ -1,14 +1,14 @@
 describe("Регистрация", function() {
 
-    const USER_EMAIL = 'danila.kaluga26@gmail.com'
-    const PASSWORD = 'Luchok228'  
+    const USER_EMAIL = 'danila.qa@gmail.com'
+    const PASSWORD = 'Qa228'  
 
 });
 
 describe("Авторизация", function() {
 
-const USER_EMAIL = 'danila.kaluga26@gmail.com'
-const PASSWORD = 'Luchok228'
+const USER_EMAIL = 'danila.qa@gmail.com'
+const PASSWORD = 'Qa228'
 
     it("Проверка на введенный в строку текст", function() {
         cy.visit("https://unsplash.com/login");
@@ -43,8 +43,8 @@ const PASSWORD = 'Luchok228'
     it("Вход с невалидным логином и паролем", function() {
         cy.visit("https://unsplash.com/login");
         cy.url().should('include', 'https://unsplash.com/login'); 
-        cy.get('input[name="email"]').type("danila.kaluga2546@gmail.com");
-        cy.get('input[name="password"]').type('Luchok22348{enter}');     
+        cy.get('input[name="email"]').type("danila.qa2546@gmail.com");
+        cy.get('input[name="password"]').type('QA22348{enter}');     
         cy.contains("Invalid email or password.");
     });
 });
